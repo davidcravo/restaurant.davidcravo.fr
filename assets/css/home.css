@@ -1,0 +1,68 @@
+.home-main{
+    background-image: url(/assets/images/home/feuille_olivier_portrait.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.home-article{
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.home-article:nth-child(1n){
+    background-color: #ffffff90;
+}
+
+.home-article:nth-child(2n){
+    background-color: #53535390;
+    flex-direction: row-reverse;
+}
+
+.home-article-image{
+    padding: 1rem;
+    width: 15rem;
+    position: relative;
+}
+
+.home-article-image::before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: calc(100% + 10px);
+    height: calc(100% + 10px);
+    border: solid 1px #C89446;
+    transform: rotate(45deg);
+}
+
+.home-article p{
+    text-align: justify;
+    margin: 1rem;
+    padding: 1rem;
+}
+
+.home-article:nth-child(1n) p{
+    z-index: 1;
+}
+
+.home-article:nth-child(2n) p{
+    color: #fff;
+    z-index: 1;
+}
+
+@media (min-with : 600px) and (max-width: 1024px){
+}
+
+@media (min-width: 1024px){
+    .home-article-image{
+        width: 36rem;
+        height: auto;
+        transition: transform 0.3s ease;
+    }
+
+    .home-article-image:hover{
+        transform: scale(1.31) ;
+    }
+}
+   
