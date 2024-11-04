@@ -1,0 +1,33 @@
+.main-portugal{
+    display: flex;
+    flex-direction: column;
+}
+
+.main-portugal img{
+    width: 100%;
+    height: auto;
+}
+
+.main-portugal div{
+    text-align: justify;
+    padding: 1rem;
+}
+
+.main-portugal button{
+    margin: 1rem auto;
+    border-color: #2B6E98;
+    border-radius: 0.5rem;
+    background-color: #DDE6E3;
+}
+
+@media (min-width: 1024px){
+    .main-portugal img{
+        position: relative;
+    }
+
+    .main-portugal div{
+        position: absolute;
+        padding-bottom: 15rem;
+        margin: 1rem 5rem;
+    }
+}
