@@ -23,17 +23,17 @@ class Time_slot{
         if(empty($this->am_start) && empty($this->am_end)){
             $am = 'Fermé';
         }else{
-            $am = $this->am_start . 'h/' . $this->am_end . 'h';
+            $am = 'de ' . $this->am_start . 'h à ' . $this->am_end . 'h';
         }
         if(empty($this->pm_start) && empty($this->pm_end)){
             $pm = 'Fermé';
         }else{
-            $pm = $this->pm_start . 'h/' . $this->pm_end . 'h';
+            $pm = 'de ' . $this->pm_start . 'h à ' . $this->pm_end . 'h';
         }
         if($am === 'Fermé' && $pm === 'Fermé'){
             $time_slot = 'Fermé';
         }else{
-            $time_slot = implode(' - ', [$am , $pm]);
+            $time_slot = implode(' et ', [$am , $pm]);
         }
         return <<<HTML
             <li>
