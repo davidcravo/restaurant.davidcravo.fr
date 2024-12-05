@@ -16,11 +16,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     
-    <script src="/assets/js/home.js" async defer></script>
-
     <link rel="stylesheet" href="/assets/css/site.css">
     <link rel="stylesheet" href="/assets/css/header.css">
+    <link rel="stylesheet" href="/assets/css/find_us.css">
     <link rel="stylesheet" href="/assets/css/home.css">
     <link rel="stylesheet" href="/assets/css/portugal.css">
+    <link rel="stylesheet" href="/assets/css/menu.css">
+
+    <script src="/assets/js/home.js" defer></script>
+    <script src="/assets/js/menu.js" defer></script>
+    <script src="https://kit.fontawesome.com/f129c06877.js" crossorigin="anonymous"></script>
 </head>
 <body>

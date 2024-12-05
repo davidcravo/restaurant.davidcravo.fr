@@ -31,6 +31,39 @@ function get_csv_files($file, $template){
                 'description' => $data[4],
                 'text' => $data[5]
             ];
+        }elseif($template === 'menu'){
+            $files[] = [
+                'id' => $data[0],
+                'image' => $data[1],
+                'description' => $data[2],
+                'name' => $data[3],
+                'price' => $data[4],
+                'type' => $data[5],
+                'link' => $data[6],
+                'text' => $data[7]
+            ];
+        }elseif($template === 'address'){
+            $files[] = [
+                'id' => $data[0],
+                'street_address' => $data[1],
+                'postal_code' => $data[2],
+                'city' => $data[3],
+                'country' => $data[4]
+            ];
+        }elseif($template === 'phone'){
+            $files[] = [
+                'id' => $data[0],
+                'phone_number' => $data[1]
+            ];
+        }elseif($template === 'time_slot'){
+            $files[] = [
+                'id' => $data[0],
+                'day_of_the_week' => $data[1],
+                'am_start' => $data[2],
+                'am_end' => $data[3],
+                'pm_start' => $data[4],
+                'pm_end' => $data[5]
+            ];
         }
     }
 
