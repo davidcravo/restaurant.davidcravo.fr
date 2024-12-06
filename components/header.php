@@ -13,6 +13,7 @@
             <?= nav_item('/templates/recipes.php', 'Recettes', 'menu-item') ?>
             <?= nav_item('/templates/find_us.php', 'Nous trouver', 'menu-item') ?>
             <?= nav_item('/templates/contact.php', 'Contact', 'menu-item') ?>
+            <?= nav_item('/templates/guestbook.php', "Livre d'or", 'menu-item') ?>
             <?= nav_item('/templates/reservation.php', 'Réserver', 'menu-item menu-button') ?>
 
         </nav>
