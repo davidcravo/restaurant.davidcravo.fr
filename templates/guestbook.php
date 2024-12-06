@@ -8,16 +8,15 @@ $file = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 
 
 $errors = null;
 $success = false;
-$message = new Message($_POST['username'], $_POST['message']);
+$guestbook = new Guestbook($file);
 if(isset($_POST['username'], $_POST['message'])){
+    $message = new Message($_POST['username'], $_POST['message']);
     if($message->isValid()){
-        $guestbook = new Guestbook($file);
         $guestbook->addMessage($message);
         $success = true;
-        $_POST = [];
+        $_POST=[];
     }else{
         $errors = $message->getErrors();
-        dump($errors);
     }
 }
 $messages = $guestbook->getMessages();
@@ -66,4 +65,6 @@ $messages = $guestbook->getMessages();
     </div>
 </main>
 
-<? require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . 'footer.php'; ?>
+<? 
+    require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . 'footer.php'; 
+?>

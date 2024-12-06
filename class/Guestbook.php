@@ -20,11 +20,14 @@ class Guestbook{
     }
 
     public function getMessages(): array{
-        $content = trim(file_get_contents($this->file));
-        $lines = explode(PHP_EOL, $content);
         $messages = [];
-        foreach($lines as $line){
-            $messages[] = Message::fromJSON($line);
+        $content = trim(file_get_contents($this->file));
+        if($content !== ''){
+            $lines = explode(PHP_EOL, $content);
+            
+            foreach($lines as $line){
+                $messages[] = Message::fromJSON($line);
+            }
         }
         return array_reverse($messages);
     }
