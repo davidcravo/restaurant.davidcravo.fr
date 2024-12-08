@@ -14,7 +14,13 @@ class Guestbook{
         }
         $this->file = $file;
     }
-
+    
+    /**
+     * addMessage
+     *
+     * @param  mixed $message
+     * @return void
+     */
     public function addMessage(Message $message): void{
         file_put_contents($this->file, $message->toJSON() . PHP_EOL, FILE_APPEND);
     }
