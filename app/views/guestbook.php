@@ -1,10 +1,14 @@
 <?php
 
-require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . 'init.php';
-require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . 'head.php';
-require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . 'header.php';
+use App\Models\Guestbook;
+use App\Models\Message;
 
-$file = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'guestbook' . DIRECTORY_SEPARATOR . 'messages';
+require_once 'partials' . DIRECTORY_SEPARATOR . 'header.php';
+require_once dirname(__DIR__,2) . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
+require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'models' . DIRECTORY_SEPARATOR . 'Guestbook.php';
+require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'models' . DIRECTORY_SEPARATOR . 'Message.php';
+
+$file = dirname(__DIR__,2) . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'guestbook' . DIRECTORY_SEPARATOR . 'messages';
 
 $errors = null;
 $success = false;
@@ -66,5 +70,5 @@ $messages = $guestbook->getMessages();
 </main>
 
 <? 
-    require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . 'footer.php'; 
+    require_once 'partials' . DIRECTORY_SEPARATOR . 'footer.php'; 
 ?>
