@@ -53,11 +53,6 @@ class HomeArticle{
     private string $dir = '/app/views/';
 
     /**
-     * @var PDO Connexion à la base de données.
-     */
-    private PDO $db;
-
-    /**
      * Constructeur de la classe HomeArticle.
      *
      * @param int $id Identifiant unique de l'article.
@@ -93,9 +88,9 @@ class HomeArticle{
      * @return array<HomeArticle> Tableau d'instances de `HomeArticle` représentant les articles.
      * @throws \PDOException En cas d'erreur lors de l'exécution de la requête SQL.
      */
-    public function getArticles(): array{
-        $this->db = Database::getConnection();
-        $stmt = $this->db->query("SELECT * FROM home_articles");
+    public static function getArticles(): array{
+        $pdo = Database::getConnection();
+        $stmt = $pdo->query("SELECT * FROM home_articles");
         $results = $stmt->fetchAll();
         return array_map(fn($row) => new self(
             $row['id'],

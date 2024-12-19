@@ -18,7 +18,20 @@ class Address{
         $this->country = $country;
     }
 
-    public function address_html(){
+    public static function getAddresses(){
+        $pdo = Database::getConnection();
+        $stmt = $pdo->query("SELECT * FROM addresses");
+        $results = $stmt->fetchAll();
+        return array_map(fn($row) => new self(
+            $row['id'],
+            $row['street_address'],
+            $row['postal_code'],
+            $row['city'],
+            $row['country']
+        ), $results);
+    }
+
+    public function toHTML(){
         return <<<HTML
             <li>
                 $this->street_address<br>
@@ -26,6 +39,6 @@ class Address{
                 $this->city<br>
                 $this->country
             </li>
-HTML;
+        HTML;
     }
 }

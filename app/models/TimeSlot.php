@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-class Time_slot{
+class TimeSlot{
 
     private int $id;
     private string $day_of_the_week;
@@ -21,7 +21,21 @@ class Time_slot{
         $this->pm_end = $pm_end ?? '';
     }
 
-    public function time_slot_html(){
+    public static function getTimeSlots(): array{
+        $pdo = Database::getConnection();
+        $stmt = $pdo->query("SELECT * FROM time_slots");
+        $results = $stmt->fetchAll();
+        return array_map(fn($row) => new self(
+            $row['id'],
+            $row['day_of_the_week'],
+            $row['am_start'],
+            $row['am_end'],
+            $row['pm_start'],
+            $row['pm_end']
+        ), $results);
+    }
+
+    public function toHTML(){
         if(empty($this->am_start) && empty($this->am_end)){
             $am = 'Fermé';
         }else{

@@ -6,11 +6,7 @@ use App\Models\HomeArticle;
     require __DIR__ . DIRECTORY_SEPARATOR . 'partials' . DIRECTORY_SEPARATOR . 'header.php';
     require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'models' . DIRECTORY_SEPARATOR . 'HomeArticle.php';
 
-    // $file = dirname(__DIR__,2) . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'home.csv';
-    // $articles = get_csv_files($file, 'home');
-
-    $articleModel = new HomeArticle(0, '', '', '', '', '');
-    $articles = $articleModel->getArticles();
+    $articles = HomeArticle::getArticles();
 ?>
 
 <main class="home-main">

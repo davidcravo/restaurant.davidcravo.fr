@@ -1,32 +1,31 @@
 <?php
 
-    use App\Models\Time_slot;
+    use App\Models\TimeSlot;
     use App\Models\Address;
     use App\Models\Phone;
 
-    include dirname(__DIR__,2) . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . 'init.php';
-    require __DIR__ . DIRECTORY_SEPARATOR . 'partials' . DIRECTORY_SEPARATOR . 'head.php';
+    require dirname(__DIR__,2) . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
     require __DIR__ . DIRECTORY_SEPARATOR . 'partials' . DIRECTORY_SEPARATOR . 'header.php';
+    require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'models' . DIRECTORY_SEPARATOR . 'TimeSlot.php';
+    require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'models' . DIRECTORY_SEPARATOR . 'Address.php';
+    require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'models' . DIRECTORY_SEPARATOR . 'Phone.php';
+    require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'models' . DIRECTORY_SEPARATOR . 'Database.php';
 
-    $file_addresses = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'addresses.csv';
-    $addresses = get_csv_files($file_addresses, 'address');
+    $addresses = Address::getAddresses();
+    $phones = Phone::getPhones();
+    $time_slots = TimeSlot::getTimeSlots();
 
-    $file_phones = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'phones.csv';
-    $phones = get_csv_files($file_phones, 'phone');
-
-    $file_time_slots = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'time_slots.csv';
-    $time_slots = get_csv_files($file_time_slots, 'time_slot');
 ?>
 
 <main class="main-find_us">
-    <img src="/assets/images/about/restaurant.jpeg" alt="Photo du restaurant">
+    <img src="/public/assets/images/about/restaurant.jpeg" alt="Photo du restaurant">
     <section class="section-time-slots">
         <h1>Horaires d'ouverture</h1>
         <ul>
-            <?php foreach($time_slots as $time_slot){
-                $time_slot_object = new Time_slot($time_slot['id'], $time_slot['day_of_the_week'], $time_slot['am_start'], $time_slot['am_end'], $time_slot['pm_start'], $time_slot['pm_end']);
-                echo $time_slot_object->time_slot_html();
-            }
+            <?php 
+                foreach($time_slots as $time_slot){
+                    echo $time_slot->toHTML();
+                }
             ?>
         </ul>
     </section>
@@ -35,16 +34,14 @@
         <i class="fa-solid fa-location-dot"></i>
         <ul>
             <?php foreach($addresses as $address){
-                $address_object = new Address($address['id'], $address['street_address'], $address['postal_code'], $address['city'], $address['country']);
-                echo $address_object->address_html();
+                echo $address->toHTML();
             }
             ?>
         </ul>
         <i class="fa-solid fa-phone-volume"></i>
         <ul>
             <?php foreach($phones as $phone){
-                $phone_object = new Phone($phone['id'], $phone['phone_number']);
-                echo $phone_object->phones_html();
+                echo $phone->toHTML();
             } 
             ?>
         </ul>
@@ -54,4 +51,4 @@
     </section>
 </main>
 
-<?php require __DIR__ . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . 'footer.php' ?>
+<?php require __DIR__ . DIRECTORY_SEPARATOR . 'partials' . DIRECTORY_SEPARATOR . 'footer.php' ?>

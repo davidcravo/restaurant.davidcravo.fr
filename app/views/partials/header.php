@@ -38,13 +38,13 @@
                 <a href="/templates/home.php"><img src="/public/logo.jpeg" alt="Restaurant's logo"></a>
             </div>
             <nav class="menu">
-                <?= nav_item('/views/home.php', 'Accueil', 'menu-item') ?>
-                <?= nav_item('/views/menu.php', 'Menu', 'menu-item') ?>
-                <?= nav_item('/views/recipes.php', 'Recettes', 'menu-item') ?>
-                <?= nav_item('/views/find_us.php', 'Nous trouver', 'menu-item') ?>
-                <?= nav_item('/views/contact.php', 'Contact', 'menu-item') ?>
-                <?= nav_item('/views/guestbook.php', "Livre d'or", 'menu-item') ?>
-                <?= nav_item('/views/reservation.php', 'Réserver', 'menu-item menu-button') ?>
+                <?= nav_item('/app/views/home.php', 'Accueil', 'menu-item') ?>
+                <?= nav_item('/app/views/menu.php', 'Menu', 'menu-item') ?>
+                <?= nav_item('/app/views/recipes.php', 'Recettes', 'menu-item') ?>
+                <?= nav_item('/app/views/find_us.php', 'Nous trouver', 'menu-item') ?>
+                <?= nav_item('/app/views/contact.php', 'Contact', 'menu-item') ?>
+                <?= nav_item('/app/views/guestbook.php', "Livre d'or", 'menu-item') ?>
+                <?= nav_item('/app/views/reservation.php', 'Réserver', 'menu-item menu-button') ?>
 
             </nav>
         </div>
