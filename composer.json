@@ -3,6 +3,11 @@
     "description": "Un site de travail sur un restaurant fictif",
     "type": "project",
     "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
     "authors": [
         {
             "name": "CRAVO David",

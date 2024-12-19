@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Models;
+
 class Time_slot{
 
     private int $id;
@@ -39,6 +41,6 @@ class Time_slot{
             <li>
                 $this->day_of_the_week : $time_slot
             </li>
-HTML;
+        HTML;
     }
 }

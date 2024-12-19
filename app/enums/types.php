@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Enums;
+
 enum Type: string{
     case Starter = 'starter';
     case Main = 'main';
