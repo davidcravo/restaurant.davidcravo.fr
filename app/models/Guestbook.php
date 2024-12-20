@@ -16,9 +16,7 @@ require __DIR__ . DIRECTORY_SEPARATOR . 'Message.php';
 class Guestbook{
 
     /**
-     * Fichier utilisé pour stocker les messages localement.
-     *
-     * @var string
+     * @var string Fichier utilisé pour stocker les messages localement.
      */
     private string $file;
 
