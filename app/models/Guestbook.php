@@ -7,6 +7,9 @@ use App\Models\Database;
 use DateTime;
 use DateTimeZone;
 
+require __DIR__ . DIRECTORY_SEPARATOR . 'Database.php';
+require __DIR__ . DIRECTORY_SEPARATOR . 'Message.php';
+
 class Guestbook{
 
     private string $file;
@@ -60,7 +63,7 @@ class Guestbook{
     public function loadMessages(): array{
         $pdo = Database::getConnection();
         $stmt = $pdo->query("SELECT * FROM guestbook");
-        $results = $stmt->fetchAll();
+        $results = array_reverse($stmt->fetchAll());
         return array_map(fn($row) => new Message(
             $row['username'],
             $row['message'],
