@@ -6,7 +6,6 @@ require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR 
 require 'Database.php';
 
 use App\Config\Config;
-use PDO;
 
 /**
  * Modèle pour gérer les articles de la section home
@@ -18,37 +17,51 @@ use PDO;
 class HomeArticle{
 
     /**
-     * @var int Identifiant unique de l'article.
+     * Identifiant unique de l'article.
+     * 
+     * @var int 
      */
     private int $id;
 
     /**
-     * @var string Chemin vers l'image associée à l'article.
+     * Chemin vers l'image associée à l'article.
+     * 
+     * @var string 
      */
     private string $image;
 
     /**
-     * @var string Description de l'article (utilisée dans l'attribut alt de l'image).
+     * Description de l'article (utilisée dans l'attribut alt de l'image).
+     * 
+     * @var string 
      */
     private string $description;
     
     /**
-     * @var string Identifiant du lieu associé à l'article (ID HTML).
+     * Identifiant du lieu associé à l'article (ID HTML).
+     * 
+     * @var string 
      */
     private string $place;
 
     /**
-     * @var string Lien relatif associé à l'article.
+     * Lien relatif associé à l'article.
+     * 
+     * @var string 
      */
     private string $link;
 
     /**
-     * @var string Texte affiché sous l'image de l'article.
+     * Texte affiché sous l'image de l'article.
+     * 
+     * @var string 
      */
     private string $text;
 
     /**
-     * @var string Répertoire de base pour les vues (utilisé pour générer les liens).
+     * Répertoire de base pour les vues (utilisé pour générer les liens).
+     * 
+     * @var string 
      */
     private string $dir = '/app/views/';
 
