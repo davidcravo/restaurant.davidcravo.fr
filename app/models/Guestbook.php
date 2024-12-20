@@ -10,10 +10,23 @@ use DateTimeZone;
 require __DIR__ . DIRECTORY_SEPARATOR . 'Database.php';
 require __DIR__ . DIRECTORY_SEPARATOR . 'Message.php';
 
+/**
+ * Classe pour gérer un livre d'or.
+ */
 class Guestbook{
 
+    /**
+     * Fichier utilisé pour stocker les messages localement.
+     *
+     * @var string
+     */
     private string $file;
 
+    /**
+     * Constructeur de la classe Guestbook.
+     *
+     * @param string $file Chemin vers le fichier de stockage des messages.
+     */
     public function __construct(string $file){
         $directory = dirname($file);
         if(!is_dir($directory)){
@@ -26,29 +39,40 @@ class Guestbook{
     }
     
     /**
-     * addMessage
+     * Ajoute un message dans le fichier local du livre d'or.
      *
-     * @param  mixed $message
+     * @param Message $message Instance du message à ajouter.
      * @return void
      */
     public function addMessage(Message $message): void{
         file_put_contents($this->file, $message->toJSON() . PHP_EOL, FILE_APPEND);
     }
 
-    // public function getMessages(): array{
-    //     $messages = [];
-    //     $content = trim(file_get_contents($this->file));
-    //     if($content !== ''){
-    //         $lines = explode(PHP_EOL, $content);
+    /**
+     * Récupère les messages stockés localement.
+     *
+     * @return Message[] Liste des messages.
+     */
+    public function getMessages(): array{
+        $messages = [];
+        $content = trim(file_get_contents($this->file));
+        if($content !== ''){
+            $lines = explode(PHP_EOL, $content);
             
-    //         foreach($lines as $line){
-    //             $messages[] = Message::fromJSON($line);
-    //         }
-    //     }
-    //     return array_reverse($messages);
-    // }
+            foreach($lines as $line){
+                $messages[] = Message::fromJSON($line);
+            }
+        }
+        return array_reverse($messages);
+    }
 
-    public function saveMessage(Message $message){
+    /**
+     * Sauvegarde un message dans la base de données.
+     *
+     * @param Message $message Instance du message à sauvegarder.
+     * @return void
+     */
+    public function saveMessage(Message $message): void{
         $pdo = Database::getConnection();
         $sql = "INSERT INTO guestbook (username, message, date) VALUES (:username, :message, :date)";
         $stmt = $pdo->prepare($sql);
@@ -60,6 +84,11 @@ class Guestbook{
         ]);
     }
 
+    /**
+     * Charge tous les messages depuis la base de données.
+     *
+     * @return Message[] Liste des messages sous forme d'objets Message.
+     */
     public function loadMessages(): array{
         $pdo = Database::getConnection();
         $stmt = $pdo->query("SELECT * FROM guestbook");
