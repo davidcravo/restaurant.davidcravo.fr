@@ -4,32 +4,71 @@ namespace App\Models;
 
 use App\Config\Config;
 
+/**
+ * Classe représentant un plat du menu
+ */
 class Dish{
 
+    /**
+     * Identifiant unique du plat
+     */
     private int $id;
 
+    /**
+     * Chemin vers l'image du plat
+     */
     private string $image;
 
+    /**
+     * Texte alternatif pour l'image du plat
+     */
     private string $alternative;
 
+    /**
+     * Nom du plat
+     */
     private string $name;
 
+    /**
+     * Prix du plat
+     */
     private float $price;
 
+    /**
+     * Catégorie du plat (entrée, plat principal, dessert, etc.)
+     */
     private string $course;
 
+    /**
+     * Lien vers la recette du plat
+     */
     private string $link;
 
+    /**
+     * Description du plat
+     */
     private string $description;
 
+    /**
+     * Répertoire des images des plats
+     */
     private string $dirImage = Config::DIR['images'] . 'menu/';
 
+    /**
+     * Répertoire des vues
+     */
     private string $dirView = Config::DIR['views'];
 
+    /**
+     * Récupère la catégorie du plat
+     */
     public function getCourse(){
         return $this->course;
     }
 
+    /**
+     * Constructeur de la classe Dish
+     */
     public function __construct(
         int $id,
         string $image,
@@ -50,6 +89,11 @@ class Dish{
         $this->description = $description;
     }
 
+    /**
+     * Récupère tous les plats depuis la base de données
+     * 
+     * @return Dish[] Liste des plats sous forme d'objet Dish
+     */
     public static function getDishes(): array{
         $pdo = Database::getConnection();
         $stmt = $pdo->query("SELECT * FROM dishes");
@@ -66,6 +110,11 @@ class Dish{
         ), $results);
     }
 
+    /**
+     * Génère le code HTML pour afficher un plat du menu
+     * 
+     * @return string Code HTML du plat
+     */
     public function toHTML(){
         return <<<HTML
             <article class="menu-article">
