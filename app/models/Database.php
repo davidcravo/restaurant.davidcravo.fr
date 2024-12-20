@@ -10,6 +10,11 @@ use \PDOException;
  */
 class Database{
 
+    /**
+     * Instance unique de la connexion PDO.
+     *
+     * @var PDO|null
+     */
     private static ?PDO $pdo = null;
 
     /**
@@ -34,6 +39,12 @@ class Database{
         return self::$pdo;
     }
 
+    /**
+     * Vérifie si une table existe dans la base de données.
+     *
+     * @param string $table_name Nom de la table à vérifier.
+     * @return bool Retourne `true` si la table existe, `false` sinon.
+     */
     public static function table_exists(string $table_name): bool{
         $pdo = self::getConnection();
         try{
@@ -46,6 +57,12 @@ class Database{
         }
     }
 
+    /**
+     * Crée une table dans la base de données à partir d'une requête SQL.
+     *
+     * @param string $sql Requête SQL de création de table.
+     * @return bool Retourne `true` si la table a été créée avec succès, `false` sinon.
+     */
     public static function create_table(string $sql): bool{
         $pdo = self::getConnection();
         try{
