@@ -13,7 +13,8 @@ $sql_files = [
     'home_articles' => 'create_table_home_articles.sql',
     'adresses' => 'create_table_addresses.sql',
     'phones' => 'create_table_phones.sql',
-    'time_slots' => 'create_table_time_slots.sql'
+    'time_slots' => 'create_table_time_slots.sql',
+    'guestbook' => 'create_table_guestbook.sql'
 ];
 
 foreach($sql_files as $table_name => $file){

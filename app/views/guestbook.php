@@ -16,14 +16,16 @@ $guestbook = new Guestbook($file);
 if(isset($_POST['username'], $_POST['message'])){
     $message = new Message($_POST['username'], $_POST['message']);
     if($message->isValid()){
-        $guestbook->addMessage($message);
+        //$guestbook->addMessage($message);
+        $guestbook->saveMessage($message);
         $success = true;
         $_POST=[];
     }else{
         $errors = $message->getErrors();
     }
 }
-$messages = $guestbook->getMessages();
+//$messages = $guestbook->getMessages();
+$messages = $guestbook->loadMessages();
 ?>
 
 <main class="main_guestbook">
@@ -60,10 +62,11 @@ $messages = $guestbook->getMessages();
         
         <?php if(!empty($messages)): ?>
             <h1 class="mt-4">Vos messages</h1>
-
-            <?php foreach($messages as $message): ?>
-                <?= $message->toHTML() ?>
-            <?php endforeach; ?>
+            <?php 
+                foreach($messages as $message){
+                    echo $message->toHTML();
+                }
+            ?>
         <?php endif ?>            
         
     </div>
