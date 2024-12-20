@@ -19,6 +19,7 @@ class Config{
      */
     public const DIR = [
         'images' => '/public/assets/images/',
-        'sql' => __DIR__ .'/../../sql/'
+        'sql' => __DIR__ .'/../../sql/',
+        'views' => __DIR__ . '/../views/'
     ];
 }

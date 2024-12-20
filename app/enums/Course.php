@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-enum Type: string{
+enum Course: string{
     case Starter = 'starter';
     case Main = 'main';
     case Cheese = 'cheese';

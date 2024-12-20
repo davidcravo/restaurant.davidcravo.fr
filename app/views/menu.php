@@ -1,12 +1,13 @@
 <?php
-    include dirname(__DIR__) . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . 'init.php';
-    require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . 'head.php';
-    require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . 'header.php';
+    use App\Enums\Course;
+    use App\Models\Dish;
 
-    $file = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'menu.csv';
-    $articles = get_csv_files($file, 'menu');
+    require dirname(__DIR__,2) . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
+    require __DIR__ . DIRECTORY_SEPARATOR . 'partials' . DIRECTORY_SEPARATOR . 'header.php';
+
     $command = [];
-    $types = Type::getTypeKeysValues();
+    $courses = Course::getTypeKeysValues();
+    $dishes = Dish::getDishes();
 ?>
 
 <main class="menu-main">
@@ -17,29 +18,17 @@
         </div>
     </section>
     <section class="menu-section-menu">
-        <?php foreach($types as $k => $type): ?>
-            <h1><?= $type ?></h1>
-            <?php foreach ($articles as $article) : ?>
-                <?php if($article['type'] === $k): ?>
-                    <article class="menu-article">
-                        <div class="menu-image">
-                            <a href="<?= $article['link'] ?>">
-                                <img src="<?= $article['image'] ?>" alt="<?= $article['description'] ?>">
-                            </a>
-                        </div>
-                        <div class="menu-content">
-                            <a href="<?= $article['link'] ?>">
-                                <h2><?= $article['name'] ?></h2>
-                            </a>
-                            <p><?= $article['text'] ?></p>
-                            <span><?= $article['price'] ?>€</span>
-                            <button>Ajouter</button>
-                        </div>
-                    </article>
-                <?php endif ?>
-            <?php endforeach ?>
+        <?php foreach($courses as $k => $course): ?>
+            <h1><?= $course ?></h1>
+            <?php 
+                foreach ($dishes as $dish){
+                    if($dish->getCourse() === $k){
+                        echo $dish->toHTML();
+                    }
+                }    
+            ?>
         <?php endforeach ?>
     </section>
 </main>
 
-<?php require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . 'footer.php' ?>
+<?php require __DIR__ . DIRECTORY_SEPARATOR . 'partials' . DIRECTORY_SEPARATOR . 'footer.php' ?>
