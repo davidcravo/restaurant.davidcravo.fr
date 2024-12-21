@@ -1,6 +1,8 @@
 <?php
 
-enum Type: string{
+namespace App\Enums;
+
+enum Course: string{
     case Starter = 'starter';
     case Main = 'main';
     case Cheese = 'cheese';

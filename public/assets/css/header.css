@@ -1,6 +1,6 @@
 .header{
     background: linear-gradient(#00000099 50%, #28282840),
-        url(/assets/images/header/header.jpeg);
+        url(/public/assets/images/header/header.jpeg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
