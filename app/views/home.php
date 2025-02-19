@@ -1,13 +1,5 @@
-<?php
-
-use App\Models\HomeArticle;
-
-    include dirname(__DIR__,2) . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . 'init.php';
-    require __DIR__ . DIRECTORY_SEPARATOR . 'partials' . DIRECTORY_SEPARATOR . 'header.php';
-    require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'models' . DIRECTORY_SEPARATOR . 'HomeArticle.php';
-
-    $articles = HomeArticle::getArticles();
-?>
+<?php require_once __DIR__ . DIRECTORY_SEPARATOR . 'partials' . DIRECTORY_SEPARATOR . 'header.php'; ?>
+<?php require_once dirname(__DIR__,2) . '/vendor/autoload.php'; ?>
 
 <main class="home-main">
     <?php 
@@ -17,4 +9,4 @@ use App\Models\HomeArticle;
     ?>
 </main>
 
-<?php require __DIR__ . DIRECTORY_SEPARATOR . 'partials' . DIRECTORY_SEPARATOR . 'footer.php' ?>
+<?php require_once __DIR__ . DIRECTORY_SEPARATOR . 'partials' . DIRECTORY_SEPARATOR . 'footer.php'; ?>

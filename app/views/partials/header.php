@@ -38,8 +38,8 @@
                 <a href="/templates/home.php"><img src="/public/logo.jpeg" alt="Restaurant's logo"></a>
             </div>
             <nav class="menu">
-                <?= nav_item('/app/views/home.php', 'Accueil', 'menu-item') ?>
-                <?= nav_item('/app/views/menu.php', 'Menu', 'menu-item') ?>
+                <?= nav_item('/', 'Accueil', 'menu-item') ?>
+                <?= nav_item('/menu', 'Menu', 'menu-item') ?>
                 <?= nav_item('/app/views/recipes.php', 'Recettes', 'menu-item') ?>
                 <?= nav_item('/app/views/find_us.php', 'Nous trouver', 'menu-item') ?>
                 <?= nav_item('/app/views/contact.php', 'Contact', 'menu-item') ?>
