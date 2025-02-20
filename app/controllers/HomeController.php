@@ -6,6 +6,7 @@ use App\Models\HomeArticle;
 use App\Models\View;
 
 require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'models' . DIRECTORY_SEPARATOR . 'HomeArticle.php';
+require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'models' . DIRECTORY_SEPARATOR . 'View.php';
 
 /**
  * Controleur pour la gestion de la page d'accueil.
@@ -25,13 +26,6 @@ class HomeController{
             error_log("Erreur lors de la récupération des articles : " . $e->getMessage());
         }
         
-
         View::render('home', compact('articles'));
-        // dump(compact('articles'));
     }
-
-    // public function render(string $view, array $data = []): void{
-    //     extract($data);
-    //     require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . "$view.php";
-    // }
 }
