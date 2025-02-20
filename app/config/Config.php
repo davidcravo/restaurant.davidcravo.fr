@@ -18,7 +18,7 @@ class Config{
      * - 'sql' : Chemin vers le dossier contenant les fichiers SQL.
      */
     public const DIR = [
-        'images' => '/public/assets/images/',
+        'images' => '/assets/images/',
         'sql' => __DIR__ .'/../../sql/',
         'views' => __DIR__ . '/../views/'
     ];
