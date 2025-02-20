@@ -10,7 +10,7 @@
 
     $command = [];
     $courses = Course::getTypeKeysValues();
-    $dishes = Dish::getDishes();
+    //$dishes = Dish::getDishes();
 ?>
 
 <main class="menu-main">

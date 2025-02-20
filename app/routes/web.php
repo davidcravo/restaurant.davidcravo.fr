@@ -2,12 +2,13 @@
 
 
 use App\Controllers\HomeController;
+use App\Controllers\MenuController;
 
 require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'controllers' . DIRECTORY_SEPARATOR . 'HomeController.php';
+require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'controllers' . DIRECTORY_SEPARATOR . 'MenuController.php';
 
 
 return $routes = [
-    '' => [HomeController::class, 'index'],
-    '/' => [HomeController::class, 'index'],
-    '/menu' => [HomeController::class, 'index'],
+    'home' => [HomeController::class, 'index'],
+    'menu' => [MenuController::class, 'menu'],
 ];
