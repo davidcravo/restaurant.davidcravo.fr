@@ -41,7 +41,7 @@
                 <?= nav_item('/home', 'Accueil', 'menu-item') ?>
                 <?= nav_item('/menu', 'Menu', 'menu-item') ?>
                 <?= nav_item('/recipes', 'Recettes', 'menu-item') ?>
-                <?= nav_item('/app/views/find_us.php', 'Nous trouver', 'menu-item') ?>
+                <?= nav_item('/find_us', 'Nous trouver', 'menu-item') ?>
                 <?= nav_item('/app/views/contact.php', 'Contact', 'menu-item') ?>
                 <?= nav_item('/app/views/guestbook.php', "Livre d'or", 'menu-item') ?>
                 <?= nav_item('/app/views/reservation.php', 'Réserver', 'menu-item menu-button') ?>

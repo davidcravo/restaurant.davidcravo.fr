@@ -1,20 +1,9 @@
 <?php
-
-    use App\Models\TimeSlot;
-    use App\Models\Address;
-    use App\Models\Phone;
-
     require __DIR__ . DIRECTORY_SEPARATOR . 'partials' . DIRECTORY_SEPARATOR . 'header.php';
-    require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'models' . DIRECTORY_SEPARATOR . 'Database.php';
-
-    $addresses = Address::getAddresses();
-    $phones = Phone::getPhones();
-    $time_slots = TimeSlot::getTimeSlots();
-
 ?>
 
 <main class="main-find_us">
-    <img src="/public/assets/images/about/restaurant.jpeg" alt="Photo du restaurant">
+    <img src="/assets/images/about/restaurant.jpeg" alt="Photo du restaurant">
     <section class="section-time-slots">
         <h1>Horaires d'ouverture</h1>
         <ul>
