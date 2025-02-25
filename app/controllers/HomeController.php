@@ -15,7 +15,7 @@ class HomeController{
      * 
      * @return void
      */
-    public function index(): void{
+    public function home(): void{
         try{
             $articles = HomeArticle::getArticles();
         }catch(\Exception $e){
