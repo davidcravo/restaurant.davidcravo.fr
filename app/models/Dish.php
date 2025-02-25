@@ -4,7 +4,6 @@ namespace App\Models;
 
 use App\Config\Config;
 
-require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'Config.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'Database.php';
 
 /**

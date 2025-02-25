@@ -1,34 +1,36 @@
 <?php
 
 require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
-//require_once __DIR__ . DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATOR . 'scripts' . DIRECTORY_SEPARATOR . 'create_tables.php';
 
-// use App\Routes\Web;
-// dump($_SERVER['SCRIPT_NAME']);
-// dump($_SERVER['REQUEST_URI']);
-// dump($_SERVER['REQUEST_METHOD']);
-// dump(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
-// dump(trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/'));
+use App\Core\SecurityMiddleware;
 
-// Récupération de l'URI
-// dump($_SERVER);
-$uri = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
+SecurityMiddleware::protect();
+
+// Détecte si le projet est dans un sous-dossier
+$basePath = str_replace('/public', '', dirname($_SERVER['SCRIPT_NAME']));
+$uri = trim(str_replace($basePath, '', parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)), '/');
+
+// Redirige vers "home" si l’URL est vide
 if ($uri === ''){
-    $uri = 'home';
+    header("Location: /home", true, 301);
+    exit();
 }
-//$uri = $_SERVER['REQUEST_URI'];
 
 // Chargement des routes
-$routes = require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATOR . 'routes' . DIRECTORY_SEPARATOR . 'web.php';
+$routes = require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATOR . 'Routes' . DIRECTORY_SEPARATOR . 'web.php';
 
 // Appel du contrôleur
 if(array_key_exists($uri, $routes)){
     [$controller, $method] = $routes[$uri];
-    $instance = new $controller();
-    $instance->$method();
-}else{
-    //http_response_code(404);
-    echo "Page non trouvée.";
-}
 
-//header('Location: app/views/home.php');
+    if(class_exists($controller) && method_exists($controller, $method)){
+        $instance = new $controller();
+        call_user_func([$instance, $method]);
+    }else{
+        http_response_code(500);
+        echo "Erreur 500 - Contrôleur ou méthode introuvable.";
+    }
+}else{
+    http_response_code(404);
+        require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . '404.php';
+}

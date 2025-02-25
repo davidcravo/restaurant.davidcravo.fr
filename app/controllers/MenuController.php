@@ -5,9 +5,6 @@ namespace App\Controllers;
 use App\Models\Dish;
 use App\Models\View;
 
-require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'models' . DIRECTORY_SEPARATOR . 'Dish.php';
-require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'models' . DIRECTORY_SEPARATOR . 'View.php';
-
 /**
  * Controleur pour la gestion de la page de menu
  */

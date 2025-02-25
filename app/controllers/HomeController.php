@@ -5,9 +5,6 @@ namespace App\Controllers;
 use App\Models\HomeArticle;
 use App\Models\View;
 
-require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'models' . DIRECTORY_SEPARATOR . 'HomeArticle.php';
-require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'models' . DIRECTORY_SEPARATOR . 'View.php';
-
 /**
  * Controleur pour la gestion de la page d'accueil.
  */

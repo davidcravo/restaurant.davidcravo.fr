@@ -1,16 +1,10 @@
 <?php
     use App\Enums\Course;
-    use App\Models\Dish;
 
-    require dirname(__DIR__,2) . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
     require __DIR__ . DIRECTORY_SEPARATOR . 'partials' . DIRECTORY_SEPARATOR . 'header.php';
-
-    require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'enums' . DIRECTORY_SEPARATOR . 'Course.php';
-    require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'models' . DIRECTORY_SEPARATOR . 'Dish.php';
 
     $command = [];
     $courses = Course::getTypeKeysValues();
-    //$dishes = Dish::getDishes();
 ?>
 
 <main class="menu-main">
