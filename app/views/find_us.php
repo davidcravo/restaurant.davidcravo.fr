@@ -1,6 +1,10 @@
-<?php
-    require __DIR__ . DIRECTORY_SEPARATOR . 'partials' . DIRECTORY_SEPARATOR . 'header.php';
-?>
+<?php require __DIR__ . DIRECTORY_SEPARATOR . 'partials' . DIRECTORY_SEPARATOR . 'header.php'; ?>
+
+<?php if(!empty($error_message)): ?>
+    <div class="alert alert-danger text-center" role="alert">
+        <?= htmlspecialchars($error_message, ENT_QUOTES, 'UTF-8') ?>
+    </div>
+<?php endif; ?>
 
 <main class="main-find_us">
     <img src="/assets/images/about/restaurant.jpeg" alt="Photo du restaurant">

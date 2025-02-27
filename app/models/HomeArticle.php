@@ -2,9 +2,7 @@
 
 namespace App\Models;
 
-require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'Config' . DIRECTORY_SEPARATOR . 'Config.php';
-require 'Database.php';
-
+use App\Models\Database;
 use App\Config\Config;
 
 /**

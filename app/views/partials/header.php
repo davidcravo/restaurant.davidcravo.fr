@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $title ?></title>
     <meta name="description" content="<?= htmlentities($description) ?>">
-    <link rel="shortcut icon" href="/public/logo.jpeg" type="image/x-icon">
+    <link rel="shortcut icon" href="/logo.jpeg" type="image/x-icon">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,16 +35,16 @@
     <header class="header">
         <div class="topbar">
             <div class="logo">
-                <a href="/templates/home.php"><img src="/logo.jpeg" alt="Restaurant's logo"></a>
+                <a href="/home"><img src="/logo.jpeg" alt="Restaurant's logo"></a>
             </div>
             <nav class="menu">
                 <?= nav_item('/home', 'Accueil', 'menu-item') ?>
                 <?= nav_item('/menu', 'Menu', 'menu-item') ?>
                 <?= nav_item('/recipes', 'Recettes', 'menu-item') ?>
                 <?= nav_item('/find_us', 'Nous trouver', 'menu-item') ?>
-                <?= nav_item('/app/views/contact.php', 'Contact', 'menu-item') ?>
-                <?= nav_item('/app/views/guestbook.php', "Livre d'or", 'menu-item') ?>
-                <?= nav_item('/app/views/reservation.php', 'Réserver', 'menu-item menu-button') ?>
+                <?= nav_item('/contact', 'Contact', 'menu-item') ?>
+                <?= nav_item('/guestbook', "Livre d'or", 'menu-item') ?>
+                <?= nav_item('/reservations', 'Réserver', 'menu-item menu-button') ?>
 
             </nav>
         </div>
