@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Models\Guestbook;
+use App\Models\Message;
 use App\Models\View;
 
 /**
@@ -20,7 +22,28 @@ class GuestbookController{
      * @return void
      */
     public function guestbook(): void{
-        // Affichage de la vue "guestbook.php" sans données spécifiques
-        View::render('guestbook', []);
+        $errors = null;
+        $success = false;
+        $guestbook = new Guestbook();
+
+        // Vérification de l'envoi du formulaire
+        if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'], $_POST['message'])){
+            $message = new Message($_POST['username'], $_POST['message']);
+            
+            if($message->isValid()){
+                // Sauvegarde du message dans la base de données
+                $guestbook->saveMessage($message);
+                $success = true;
+                $_POST = [];
+            }else{
+                $errors = $message->getErrors();
+            }
+        }
+
+        // Récupération des messages
+        $messages = $guestbook->loadMessages();
+
+        // Affichage de la vue "guestbook.php" avec les données
+        View::render('guestbook', compact('errors', 'success', 'messages'));
     }
 }

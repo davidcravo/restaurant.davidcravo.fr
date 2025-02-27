@@ -137,29 +137,4 @@ class Message {
             </p>
         HTML;
     }
-
-    /**
-     * Crée une instance de Message à partir d'une chaîne JSON.
-     * 
-     * @param string $json Chaîne JSON représentant un message.
-     * @return Message Instance de la classe Message.
-     */
-    public static function fromJSON(string $json): Message{
-        $data = json_decode($json, true);
-        return new self($data['username'], $data['message'], new DateTime("@" . $data['date']));
-    }
-
-    /**
-     * Convertit l'instance de Message en chaîne JSON.
-     * 
-     * @return string La représentation JSON du message.
-     */
-    public function toJSON(): string{
-        return json_encode([
-            'username' => $this->username,
-            'message' => $this->message,
-            'date' => $this->date->getTimestamp()
-
-        ]);
-    }
 }

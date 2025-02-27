@@ -34,7 +34,7 @@ $router->add('GET', '/find_us', FindUsController::class, 'findUs');
 // Route pour la page de contact
 $router->add('GET', '/contact', ContactController::class, 'contact');
 // Route pour la page du Livre d'Or
-$router->add('GET', '/guestbook', GuestbookController::class, 'guestbook');
+$router->add('GET|POST', '/guestbook', GuestbookController::class, 'guestbook');
 // Route pour la page des réservations
 $router->add('GET', '/reservations', ReservationsController::class, 'reservations');
 

@@ -18,6 +18,20 @@ class Database{
     private static ?PDO $pdo = null;
 
     /**
+     * Teste la connexion à la base de données.
+     *
+     * @return void Affiche un message de succès ou d'erreur.
+     */
+    public static function testConnection(): void {
+        try {
+            self::getConnection();
+            echo "<p class='alert alert-success'>✅ Connexion à la base de données réussie.</p>";
+        } catch (PDOException $e) {
+            echo "<p class='alert alert-danger'>❌ Erreur de connexion : " . $e->getMessage() . "</p>";
+        }
+    }
+
+    /**
      * Établit une connexion à la base de données et la retourne.
      *
      * @return PDO Instance de la connexion PDO.
