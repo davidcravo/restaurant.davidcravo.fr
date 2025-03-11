@@ -18,6 +18,20 @@ class Database{
     private static ?PDO $pdo = null;
 
     /**
+     * Teste la connexion à la base de données.
+     *
+     * @return void Affiche un message de succès ou d'erreur.
+     */
+    public static function testConnection(): void {
+        try {
+            self::getConnection();
+            echo "<p class='alert alert-success'>✅ Connexion à la base de données réussie.</p>";
+        } catch (PDOException $e) {
+            echo "<p class='alert alert-danger'>❌ Erreur de connexion : " . $e->getMessage() . "</p>";
+        }
+    }
+
+    /**
      * Établit une connexion à la base de données et la retourne.
      *
      * @return PDO Instance de la connexion PDO.
@@ -48,9 +62,10 @@ class Database{
     public static function table_exists(string $table_name): bool{
         $pdo = self::getConnection();
         try{
-            $pdo->query("DESCRIBE $table_name");
-            echo "La table $table_name existe déjà !" . PHP_EOL;
-            return true;
+            $stmt = $pdo->prepare("SHOW TABLES LIKE :table_name");
+            $stmt->execute(['table_name' => $table_name]);
+            return $stmt->fetch() !== false;
+
         }catch(PDOException $e){
             echo $e->getMessage() . PHP_EOL;
             return false;
@@ -65,6 +80,7 @@ class Database{
      */
     public static function create_table(string $sql): bool{
         $pdo = self::getConnection();
+        
         try{
             $pdo->exec($sql);
             echo "Table créée avec succès !" . PHP_EOL;

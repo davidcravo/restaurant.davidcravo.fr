@@ -1,13 +1,10 @@
-<?php
+<?php require_once __DIR__ . DIRECTORY_SEPARATOR . 'partials' . DIRECTORY_SEPARATOR . 'header.php'; ?>
 
-use App\Models\HomeArticle;
-
-    include dirname(__DIR__,2) . DIRECTORY_SEPARATOR . 'includes' . DIRECTORY_SEPARATOR . 'init.php';
-    require __DIR__ . DIRECTORY_SEPARATOR . 'partials' . DIRECTORY_SEPARATOR . 'header.php';
-    require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'models' . DIRECTORY_SEPARATOR . 'HomeArticle.php';
-
-    $articles = HomeArticle::getArticles();
-?>
+<?php if (!empty($error_message)): ?>
+    <div class="alert alert-danger text-center" role="alert">
+        <?= htmlspecialchars($error_message, ENT_QUOTES, 'UTF-8'); ?>
+    </div>
+<?php endif; ?>
 
 <main class="home-main">
     <?php 
@@ -17,4 +14,4 @@ use App\Models\HomeArticle;
     ?>
 </main>
 
-<?php require __DIR__ . DIRECTORY_SEPARATOR . 'partials' . DIRECTORY_SEPARATOR . 'footer.php' ?>
+<?php require_once __DIR__ . DIRECTORY_SEPARATOR . 'partials' . DIRECTORY_SEPARATOR . 'footer.php'; ?>

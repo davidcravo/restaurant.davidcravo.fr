@@ -1,24 +1,13 @@
-<?php
+<?php require __DIR__ . DIRECTORY_SEPARATOR . 'partials' . DIRECTORY_SEPARATOR . 'header.php'; ?>
 
-    use App\Models\TimeSlot;
-    use App\Models\Address;
-    use App\Models\Phone;
-
-    require dirname(__DIR__,2) . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
-    require __DIR__ . DIRECTORY_SEPARATOR . 'partials' . DIRECTORY_SEPARATOR . 'header.php';
-    require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'models' . DIRECTORY_SEPARATOR . 'TimeSlot.php';
-    require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'models' . DIRECTORY_SEPARATOR . 'Address.php';
-    require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'models' . DIRECTORY_SEPARATOR . 'Phone.php';
-    require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'models' . DIRECTORY_SEPARATOR . 'Database.php';
-
-    $addresses = Address::getAddresses();
-    $phones = Phone::getPhones();
-    $time_slots = TimeSlot::getTimeSlots();
-
-?>
+<?php if(!empty($error_message)): ?>
+    <div class="alert alert-danger text-center" role="alert">
+        <?= htmlspecialchars($error_message, ENT_QUOTES, 'UTF-8') ?>
+    </div>
+<?php endif; ?>
 
 <main class="main-find_us">
-    <img src="/public/assets/images/about/restaurant.jpeg" alt="Photo du restaurant">
+    <img src="/assets/images/about/restaurant.jpeg" alt="Photo du restaurant">
     <section class="section-time-slots">
         <h1>Horaires d'ouverture</h1>
         <ul>

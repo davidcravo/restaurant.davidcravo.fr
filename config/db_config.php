@@ -1,7 +1,14 @@
 <?php
+require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
+
+use Dotenv\Dotenv;
+
+$dotenv = Dotenv::createImmutable(dirname(__DIR__));
+$dotenv->load();
+
 return [
-    'host' => 'color.o2switch.net',
-    'dbname' => 'whzs2920_restaurant',
-    'user' => 'whzs2920_david',
-    'password' => ';Q9>#RGH6XS~%gx',
+    'host' => $_ENV['DB_HOST'] ?? '',
+    'dbname' => $_ENV['DB_NAME'] ?? '',
+    'user' => $_ENV['DB_USER'] ?? '',
+    'password' => $_ENV['DB_PASS'] ?? '',
 ];
