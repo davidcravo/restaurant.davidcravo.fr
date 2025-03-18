@@ -1,19 +1,19 @@
-.main-portugal{
+.main-destination{
     display: flex;
     flex-direction: column;
 }
 
-.main-portugal img{
+.main-destination img{
     width: 100%;
     height: auto;
 }
 
-.main-portugal div{
+.main-destination div{
     text-align: justify;
     padding: 1rem;
 }
 
-.main-portugal button{
+.main-destination button{
     margin: 1rem auto;
     border-color: #2B6E98;
     border-radius: 0.5rem;
@@ -21,11 +21,11 @@
 }
 
 @media (min-width: 1024px){
-    .main-portugal img{
+    .main-destination img{
         position: relative;
     }
 
-    .main-portugal div{
+    .main-destination div{
         position: absolute;
         padding-bottom: 15rem;
         margin: 1rem 5rem;

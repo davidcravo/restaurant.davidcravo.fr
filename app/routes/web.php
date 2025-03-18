@@ -7,6 +7,7 @@ use App\Controllers\MenuController;
 use App\Controllers\RecipesController;
 use App\Controllers\GuestbookController;
 use App\Controllers\ReservationsController;
+use App\controllers\DestinationController;
 use App\Core\Router;
 
 /**
@@ -38,6 +39,7 @@ $router->add('GET|POST', '/guestbook', GuestbookController::class, 'guestbook');
 // Route pour la page des réservations
 $router->add('GET', '/reservations', ReservationsController::class, 'reservations');
 
+$router->add('GET', '/destination', DestinationController::class, 'destination');
 /**
  * Retourne l'objet "$router" afin qu'il puisse être utilisé dans "index.php".
  */

@@ -31,7 +31,8 @@ $sql_files = [
     'phones' => 'create_table_phones.sql',
     'time_slots' => 'create_table_time_slots.sql',
     'guestbook' => 'create_table_guestbook.sql',
-    'dishes' => 'create_table_dishes.sql'
+    'dishes' => 'create_table_dishes.sql',
+    'destinations' => 'create_table_destinations.sql'
 ];
 
 // Parcours de chaque table à créer.

@@ -85,7 +85,7 @@ class HomeArticle{
         $this->image = Config::DIR['images'] . '/home/' . $image;
         $this->description = $description;
         $this->place = $place;
-        $this->link = $this->dir . $link;
+        $this->link = $link;
         $this->text = $text;
     }
 
@@ -121,7 +121,7 @@ class HomeArticle{
     public function toHTML(): string{
         return <<<HTML
             <article class="home-article" id="$this->place">
-                <a href="{$this->link}#{$this->place}">
+                <a href="{$this->link}?anchor={$this->place}">
                     <img src="$this->image" alt="$this->description" class="home-article-image">
                 </a>
                 <p>$this->text</p>
