@@ -3,7 +3,7 @@
         'name' => 'david/restaurant.davidcravo.fr',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '898273e08ad3284dc994fb1e99596a4b6e1e89b3',
+        'reference' => '23564963e3b1f6b72e6d83d5936fee6f0effc9aa',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -58,7 +58,7 @@
         'david/restaurant.davidcravo.fr' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '898273e08ad3284dc994fb1e99596a4b6e1e89b3',
+            'reference' => '23564963e3b1f6b72e6d83d5936fee6f0effc9aa',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
