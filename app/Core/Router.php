@@ -42,26 +42,30 @@ class Router{
         // Tente de trouver une correspondance avec les routes définies
         $match = $this->router->match();
 
-        // Si une route correspond
-        if($match){
-            // Récupère le contrôleur et la méthode associés à cette route
-            [$controller, $method] = $match['target'];
-
-            // Vérifie si le contrôleur et la méthode existent
-            if (class_exists($controller) && method_exists($controller, $method)){
-                $instance = new $controller();
-                call_user_func_array([$instance, $method], $match['params']);
-                return;
-            }else{
-                // Si le contrôleur et la méthode n'existent pas, erreur 500
-                http_response_code(500);
-                echo "Erreur 500 - Méthode ou contrôleur introuvable";
-                return;
-            }
+        if (!$match || !isset($match['target'])) {
+            http_response_code(404);
+            require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'Views' . DIRECTORY_SEPARATOR . '404.php';
+            return;
         }
 
-        // Si aucune route ne correspond, erreur 404 et affichage d'une page personnalisée
-        http_response_code(404);
-        require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'Views' . DIRECTORY_SEPARATOR . '404.php';
+        // Récupère le contrôleur et la méthode associés à cette route
+        [$controller, $method] = $match['target'];
+
+        // Vérification de l'existence du contrôleur
+        if (!class_exists($controller)) {
+            http_response_code(500);
+            die("Erreur 500 - Le contrôleur `$controller` n'existe pas.");
+        }
+
+        // Vérification de l'existence de la méthode
+        if (!method_exists($controller, $method)) {
+            http_response_code(500);
+            die("Erreur 500 - La méthode `$method` n'existe pas dans `$controller`.");
+        }
+
+        // Instanciation et appel de la méthode
+        $instance = new $controller();
+        call_user_func_array([$instance, $method], $match['params']);
+        return;
     }
 }

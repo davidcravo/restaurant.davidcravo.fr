@@ -6,6 +6,11 @@ use App\Core\SecurityMiddleware;
 
 SecurityMiddleware::protect();
 
+ini_set('display_errors', 0);
+ini_set('display_startup_errors', 0);
+error_reporting(E_ALL);
+
+
 // Charger le router depuis web.php
 $router = require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATOR . 'Routes' . DIRECTORY_SEPARATOR . 'web.php';
 
